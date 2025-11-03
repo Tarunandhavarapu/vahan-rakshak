@@ -421,6 +421,7 @@ async def tool_reg_verify_permit(body: RegulatorPermitRequest) -> Dict[str, Any]
 async def tool_reg_report_violation(body: RegulatorReportViolationRequest) -> Dict[str, Any]:
     api = RegulatorAPI()
     api.report_violation(body.vehicle_id, body.violation_type, body.timestamp)
+    logger.info(f"Violation recorded: {body.vehicle_id} - {body.violation_type} has been sent to regulator.")
     return {"status": "recorded"}
 
 
